@@ -13,9 +13,9 @@ public class EGL {
         return instance;
     }
 
-    native boolean eglBindAPI(int api);
+    // native boolean eglBindAPI(int api);
 
-    native boolean eglChooseConfig();
+    // native boolean eglChooseConfig();
 
     native long eglCreateContext(); 
 
@@ -30,11 +30,8 @@ public class EGL {
 
     native int eglGetError();
 
-    native boolean eglInitialize(long eglDisplay);
-
     native boolean eglMakeCurrent(); 
 
-    // native boolean eglSwapBuffers(long eglDisplay, long eglSurface);
 
     String eglErrorToString(int errorCode) {
         if (errorCode >= 0x3000 && errorCode < 0x3020) {

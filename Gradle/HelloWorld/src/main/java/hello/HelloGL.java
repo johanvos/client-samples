@@ -22,24 +22,19 @@ public class HelloGL {
         long nativeDisplay = 0;
         long nativeWindow = nativeWindowPtr;
 
-System.err.println("nativeWindow = "+nativeWindow);
-System.err.println("nativeDisplay = "+nativeDisplay);
+        System.err.println("nativeWindow = "+nativeWindow+", nativeDisplay = "+nativeDisplay);
 
         eglDisplay = egl.eglGetAndInitializeDisplay(nativeDisplay);
-System.err.println("[ACC] got eglDisplay at "+eglDisplay);
+        System.err.println("[ACC] got eglDisplay at "+eglDisplay);
 
-System.err.println("[ACC] now call eglChooseConfig");
-        if (!egl.eglChooseConfig()) {
-            throw new GLException(egl.eglGetError(), "Error choosing EGL config");
-        }
-System.err.println("[ACC] now call eglCreateWindowSurface");
-long eglSurface = egl.eglCreateWindowSurface(); 
-System.err.println("[ACC] now call eglCreateContext");
-long eglContext = egl.eglCreateContext(); // eglDisplay, eglConfigs[0]);
-System.err.println("[ACC] now call eglMakeCurrent");
+        System.err.println("[ACC] now call eglCreateWindowSurface");
+        long eglSurface = egl.eglCreateWindowSurface(); 
+        System.err.println("[ACC] now call eglCreateContext");
+        long eglContext = egl.eglCreateContext();
+        System.err.println("[ACC] now call eglMakeCurrent");
 
-egl.eglMakeCurrent(); // eglDisplay, eglSurface, eglSurface, eglContext);
-System.err.println("[ACC] DONE call eglMakeCurrent");
+        egl.eglMakeCurrent();
+        System.err.println("[ACC] DONE call eglMakeCurrent");
 
 
 
