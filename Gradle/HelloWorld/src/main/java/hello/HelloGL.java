@@ -12,16 +12,7 @@ public class HelloGL {
     long eglConfigs[] = {0};
     private String brol = null;
 
-    void notestGLFromJava(long nativeWindowPtr) throws GLException {
-        egl = EGL.getEGL();
-	// egl.testAll(nativeWindowPtr);
-    }
-
     void testGLFromJava(long nativeWindowPtr) throws GLException {
-	    // System.err.println("crash on brol");
-	    // System.err.println("Length = "+brol.length());
-	    // System.err.println("did not crash on brol");
-        int[] attributes = new int[]{8,8,8,8,16,1,1};
         egl = EGL.getEGL();
 
         System.err.println("EGLDISPLAY = "+eglDisplay);
@@ -34,14 +25,6 @@ public class HelloGL {
 
 System.err.println("nativeWindow = "+nativeWindow);
 System.err.println("nativeDisplay = "+nativeDisplay);
-// egl.testGraal(nativeWindow, major, minor, attributes, eglConfigs, configCount);
-
-        if (nativeDisplay == -1l) { // error condition
-            throw new GLException(0, "Could not get native display");
-        }
-        if (nativeWindow == -1l) { // error condition
-            throw new GLException(0, "Could not get native window");
-        }
 
         eglDisplay = egl.eglGetAndInitializeDisplay(nativeDisplay);
 System.err.println("[ACC] got eglDisplay at "+eglDisplay);
@@ -51,7 +34,6 @@ System.err.println("[ACC] got eglDisplay at "+eglDisplay);
 
 
 System.err.println("[ACC] now call eglChooseConfig, eglConfigssize = "+eglConfigs.length+" and 0 = "+eglConfigs[0]+" and numconfsize = "+configCount.length+" and [0] = "+configCount[0]);
-        // if (!egl.eglChooseConfig(eglDisplay, attributes, eglConfigs, 1, configCount)) {
         if (!egl.eglChooseConfig()) {
             throw new GLException(egl.eglGetError(), "Error choosing EGL config");
         }
