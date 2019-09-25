@@ -152,12 +152,14 @@ public class EGL {
 
     native boolean eglBindAPI(int api);
 
-    native boolean eglChooseConfig(
+    native boolean eglChooseConfig();
+    /*
             long eglDisplay,
             int[] attribs,
             long[] eglConfigs,
             int configSize,
             int[] configCount);
+	    */
 
     native long eglContextFromConfig(long eglDisplay, long eglConfig);
 
@@ -169,21 +171,21 @@ public class EGL {
 
     long eglCreateWindowSurface(long eglDisplay,
                                               long eglConfig,
-                                              long nativeWindow,
-                                              int[] attribs) {
-        if (eglWindowSurface == 0) {
+                                              long nativeWindow) {
+        // if (eglWindowSurface == 0) {
             eglWindowSurface = _eglCreateWindowSurface(eglDisplay, eglConfig,
-                                                       nativeWindow, attribs);
+                                                       nativeWindow);
 
-        }
+        // }
         return eglWindowSurface;
     }
 
     native long _eglCreateWindowSurface(
             long eglDisplay,
             long eglConfig,
-            long nativeWindow,
-            int[] attribs);
+            long nativeWindow); 
+    // ,
+            // int[] attribs);
 
     native boolean eglDestroyContext(long eglDisplay, long eglContext);
 
@@ -193,12 +195,11 @@ public class EGL {
             int attrib,
             int[] value);
 
-    native long eglGetDisplay(long nativeDisplay);
+    native long eglGetAndInitializeDisplay(long nativeDisplay);
 
     native int eglGetError();
 
-    native boolean eglInitialize(long eglDisplay, int[] major,
-                                        int[] minor);
+    native boolean eglInitialize(long eglDisplay);
 
     native boolean eglMakeCurrent(
             long eglDisplay,
