@@ -27,10 +27,6 @@ System.err.println("nativeDisplay = "+nativeDisplay);
 
         eglDisplay = egl.eglGetAndInitializeDisplay(nativeDisplay);
 System.err.println("[ACC] got eglDisplay at "+eglDisplay);
-        if (eglDisplay == EGL.EGL_NO_DISPLAY) {
-            throw new GLException(egl.eglGetError(), "Could not get EGL display");
-        }
-
 
 System.err.println("[ACC] now call eglChooseConfig");
         if (!egl.eglChooseConfig()) {
