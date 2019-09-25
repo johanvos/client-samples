@@ -10,7 +10,6 @@ public class HelloGL {
     private long eglDisplay;
     private EGL egl;
     long eglConfigs[] = {0};
-    private String brol = null;
 
     void testGLFromJava(long nativeWindowPtr) throws GLException {
         egl = EGL.getEGL();
@@ -33,18 +32,17 @@ System.err.println("[ACC] got eglDisplay at "+eglDisplay);
         }
 
 
-System.err.println("[ACC] now call eglChooseConfig, eglConfigssize = "+eglConfigs.length+" and 0 = "+eglConfigs[0]+" and numconfsize = "+configCount.length+" and [0] = "+configCount[0]);
+System.err.println("[ACC] now call eglChooseConfig");
         if (!egl.eglChooseConfig()) {
             throw new GLException(egl.eglGetError(), "Error choosing EGL config");
         }
-System.err.println("[ACC] did call eglChooseConfig, eglConfigssize = "+eglConfigs.length+" and 0 = "+eglConfigs[0]+" and numconfsize = "+configCount.length+" and [0] = "+configCount[0]);
 System.err.println("[ACC] now call eglCreateWindowSurface");
-long eglSurface = egl.eglCreateWindowSurface(eglDisplay, eglConfigs[0], nativeWindow);
+long eglSurface = egl.eglCreateWindowSurface(); 
 System.err.println("[ACC] now call eglCreateContext");
-long eglContext = egl.eglCreateContext(eglDisplay, eglConfigs[0]);
+long eglContext = egl.eglCreateContext(); // eglDisplay, eglConfigs[0]);
 System.err.println("[ACC] now call eglMakeCurrent");
 
-egl.eglMakeCurrent(eglDisplay, eglSurface, eglSurface, eglContext);
+egl.eglMakeCurrent(); // eglDisplay, eglSurface, eglSurface, eglContext);
 System.err.println("[ACC] DONE call eglMakeCurrent");
 
 

@@ -163,27 +163,17 @@ public class EGL {
 
     native long eglContextFromConfig(long eglDisplay, long eglConfig);
 
-    native long eglCreateContext(
-            long eglDisplay,
-            long eglConfig);
-            // long shareContext,
-            // int[] attribs);
+    native long eglCreateContext(); 
+            // long eglDisplay,
+            // long eglConfig);
 
-    long eglCreateWindowSurface(long eglDisplay,
-                                              long eglConfig,
-                                              long nativeWindow) {
-        // if (eglWindowSurface == 0) {
-            eglWindowSurface = _eglCreateWindowSurface(eglDisplay, eglConfig,
-                                                       nativeWindow);
+    long eglCreateWindowSurface() { 
+         eglWindowSurface = _eglCreateWindowSurface();// eglDisplay, eglConfig, nativeWindow);
 
-        // }
         return eglWindowSurface;
     }
 
-    native long _eglCreateWindowSurface(
-            long eglDisplay,
-            long eglConfig,
-            long nativeWindow); 
+    native long _eglCreateWindowSurface(); // long eglDisplay, long eglConfig, long nativeWindow); 
     // ,
             // int[] attribs);
 
@@ -201,11 +191,11 @@ public class EGL {
 
     native boolean eglInitialize(long eglDisplay);
 
-    native boolean eglMakeCurrent(
-            long eglDisplay,
-            long eglDrawSurface,
-            long eglReadSurface,
-            long eglContext);
+    native boolean eglMakeCurrent(); 
+            // long eglDisplay,
+            // long eglDrawSurface,
+            // long eglReadSurface,
+            // long eglContext);
 
     native String eglQueryString(long eglDisplay, int name);
 
