@@ -2,7 +2,8 @@ package hellofx;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
+import javafx.scene.*;
+import javafx.scene.shape.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,16 +16,19 @@ public class HelloFX extends Application {
     public void start(Stage stage) {
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
-        Label label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
+        // Label label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
 
-        ImageView imageView = new ImageView(new Image(HelloFX.class.getResourceAsStream("/hellofx/openduke.png")));
-        imageView.setFitHeight(200);
-        imageView.setPreserveRatio(true);
+Rectangle r = new Rectangle(10,10,100,100);
+Group g = new Group();
+g.getChildren().add(r);
+        // ImageView imageView = new ImageView(new Image(HelloFX.class.getResourceAsStream("/hellofx/openduke.png")));
+        // imageView.setFitHeight(200);
+        // imageView.setPreserveRatio(true);
 
-        VBox root = new VBox(30, imageView, label);
-        root.setAlignment(Pos.CENTER);
-        Scene scene = new Scene(root, 640, 480);
-        scene.getStylesheets().add(HelloFX.class.getResource("styles.css").toExternalForm());
+        // VBox root = new VBox(30, imageView, label);
+        // root.setAlignment(Pos.CENTER);
+        Scene scene = new Scene(g, 640, 480);
+        // scene.getStylesheets().add(HelloFX.class.getResource("styles.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

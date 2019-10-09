@@ -5,6 +5,9 @@ plugins {
 }
 
 repositories {
+maven {
+url 'https://oss.sonatype.org/service/local/repositories/orgopenjfx-1060/content'
+}
     mavenCentral()
 }
 
@@ -16,7 +19,7 @@ gluonClient {
 }
 
 javafx {
-    version = "12.0.2"
+    version = "13"
     modules = [ "javafx.controls" ]
 }
 
