@@ -10,7 +10,7 @@ repositories {
 gluonClient {
     // target = "ios" // uncomment this to run on iOS device
     verbose=true
-    graalPath = "/mnt/data/graal/github/fork/graal/vm/mxbuild/linux-amd64/GRAALVM_UNKNOWN_JAVA11/graalvm-unknown-java11-19.3.0-dev"
+    graalPath = "/home/johan/graal/github/fork/graal/vm/mxbuild/linux-amd64/GRAALVM_UNKNOWN_JAVA11/graalvm-unknown-java11-19.3.0-dev"
 }
 
 mainClassName = 'hello.HelloWorld'
