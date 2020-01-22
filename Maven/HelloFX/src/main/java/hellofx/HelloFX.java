@@ -26,10 +26,16 @@
  */
 package hellofx;
 
+import java.net.*;
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
+import javafx.scene.media.*;
+import javafx.scene.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -39,15 +45,34 @@ import javafx.stage.Stage;
 public class HelloFX extends Application {
 
     public void start(Stage stage) {
+try {
+// Thread.sleep(5000);
+        // URL resource = getClass().getResource("RaceToMars.mp3");
+        URL resource = new URL ("file:///tmp/RaceToMars.mp3");
+        Media media = new Media(resource.toString());
+MediaPlayer p = new MediaPlayer(media);
+p.play();
+stage.setTitle("AP");
+stage.setWidth(100);
+stage.setHeight(100);
+stage.show();
+} catch (Exception e) {
+e.printStackTrace();
+}
+
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
-        Label label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
+        Label label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + "."); 
+        TextField tf1 = new TextField();
+        TextArea ta2 = new TextArea();
+        Button b = new Button("ignore");
+        b.requestFocus();
 
         ImageView imageView = new ImageView(new Image(HelloFX.class.getResourceAsStream("/hellofx/openduke.png")));
         imageView.setFitHeight(200);
         imageView.setPreserveRatio(true);
 
-        VBox root = new VBox(30, imageView, label);
+        VBox root = new VBox(30, imageView, label, tf1, b, ta2);
         root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(root, 640, 480);
         scene.getStylesheets().add(HelloFX.class.getResource("styles.css").toExternalForm());
@@ -55,8 +80,9 @@ public class HelloFX extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { 
         launch(args);
     }
 
 }
+
